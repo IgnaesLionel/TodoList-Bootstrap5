@@ -12,17 +12,19 @@
 
 <div class="container">
   <div class="row">
-    <div class="text-center">
-      <h2> Bienvenue sur ma sandbox. Todo list en mode bootstrap 5</h2>
-    </div>
-    <div class="mt-3 mb-3">
-      <button type="button" class="btn btn-primary">Ajouter</button>
-      <button type="button" class="btn btn-primary">Clear</button>
+    <div class="mt-3 mb-3 text-center">
+      <button type="button" class="btn btn-primary" id="add">Ajouter</button>
+      <button type="button" class="btn btn-primary" id="clear">Clear</button>
     </div>
     <div class="mb-3" >
-        <textarea
-        class="form-control" id="exampleFormControlTextarea1" placeholder="Votre tâche à effectuer" rows="3"></textarea>
+      <div class="form-group">
+        <label for="input">Votre tâche à effectuer</label>
+        <input type="text" class="form-control" id="input">
+      </div>
     </div>
+  </div>
+  <div id=showMyTasks>
+
   </div>
 </div>
 </body>
