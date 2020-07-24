@@ -18,26 +18,49 @@ const showMyTasks = document.getElementById('showMyTasks')
 //
 
 //stockage des tâches
-const tasksStorage = ["test", "test2"]
+const tasksStorage = ["coding", "cooking", "trading"]
 //
 
 // affichage des tâches avec boutton.
-const myTasks = document.createElement('p')
-myTasks.className = "text-center"
-myTasks.textContent = tasksStorage
-const removebtn = document.createElement('button')
-removebtn.textContent ='x'
-removebtn.style.color = "red"
-removebtn.className = "btn btn-primary"
-
-myTasks.appendChild(removebtn)
-//
-
-const test = "test"
-for (let i = 0; i<tasksStorage.length; i++){
-console.log()
-showMyTasks.insertBefore(test, showMyTasks.firstChild)
+function showTask(task){
+  input.focus()
+  const myTasks = document.createElement('li')
+  const removebtn = document.createElement('button')
+  removebtn.textContent ='x'
+  myTasks.textContent = task
+  removebtn.className = "btn btn-primary"
+  removebtn.style.color = "red"
+  myTasks.className = "btn-primary mt-2 mb-2"
+  removebtn.addEventListener('click', () => {showMyTasks.removeChild(removebtn.parentNode)})
+  myTasks.appendChild(removebtn)
+  console.log(task)
+  showMyTasks.insertBefore(myTasks, showMyTasks.firstChild)
 }
+
+//event du bouton Ajouter et l'input enter
+input.addEventListener('keydown', (e) => {
+  if (e.keyCode===13){tasksStorage.push(input.value)
+  showTask(input.value)
+input.value=""} //vide l'input
+  }
+)
+
+add.addEventListener('click', () => {tasksStorage.push(input.value)
+showTask(input.value)
+input.value="" //vide l'input
+}
+)
+
 //
 
-//ajout d'une tâches
+//Clear le tableau
+clear.addEventListener('click', () => {
+  tasksStorage.splice(0,tasksStorage.length)
+  showTask()
+  }
+)
+//
+
+for (let i = 0; i<tasksStorage.length; i++){
+  showTask(tasksStorage[i])
+}
