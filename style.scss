@@ -1,0 +1,14 @@
+$primaryColor : #34ace0;
+$primary : #ffb142;
+
+@import './node_modules/bootstrap/scss/bootstrap.scss';
+
+body {
+  background-color: $primaryColor;
+}
+
+h1 {
+  color : $primary;
+  text-decoration: underline;
+  font-weight: bold;
+}

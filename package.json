@@ -1,0 +1,9 @@
+{
+  "name": "mytodobootstrap5list",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "bootstrap": "^5.0.0-alpha1"
+  }
+}
