@@ -4,7 +4,7 @@ const h1 = document.createElement('h1')
 h1.textContent = "My Todo List Project"
 h1.className = "text-center"
 const h3 = document.createElement('h3')
-h3.textContent = "Bienvenue sur ma sandbox de Todo list en mode bootstrap 5"
+h3.textContent = "Bienvenue sur notre outil gestion des tâches"
 h3.className = "text-center"
 const myContainer = document.getElementsByClassName('container')[0]
 myContainer.insertBefore(h3, myContainer.firstChild)
@@ -19,7 +19,7 @@ const showMyTasks = document.getElementById('showMyTasks')
 //
 
 //stockage des tâches
-const tasksStorage = ["coding", "cooking", "trading"]
+const tasksStorage = ["tâche1", "tâche2", "tâche3"]
 //
 
 //Creation des enfants
@@ -29,36 +29,31 @@ class Enfant {
     this.score = score,
     this.addscore = () => {
       this.score += 5
-      showlea.textContent= `${this.nom} à ${this.score} points !`
+      let injectScore = document.getElementById(nom)
+      injectScore.textContent= `${this.nom} à ${this.score} points !`
       console.log(this.score)
     }
-        
+    this.create = () => {
+      let injectp  = document.createElement('p')
+      injectp.textContent=`${this.nom} à ${this.score} points !`
+      injectp.id=nom
+      document.getElementById('score').appendChild(injectp)
+    }
   }
 }
-
 
 let lea = new Enfant("Lea", 0)
 let vic = new Enfant("Victoria", 0)
 let enzo = new Enfant("Enzo", 0)
+
 //
 
 //affichage des scores
 
+lea.create()
+vic.create()
+enzo.create()
 
-const showlea = document.createElement('p')
-showlea.textContent= `${lea.nom} à ${lea.score} points !`
-document.getElementById('score').appendChild(showlea)
-
-
-
-const showvic = document.createElement('p')
-showvic.textContent= `${vic.nom} à ${vic.score} points !`
-document.getElementById('score').appendChild(showvic)
-
-const showenzo = document.createElement('p')
-showenzo.textContent= `${enzo.nom} à ${enzo.score} points !`
-document.getElementById('score').appendChild(showenzo)
-//
 
 // affichage des tâches avec boutton.
 function showTask(task){
