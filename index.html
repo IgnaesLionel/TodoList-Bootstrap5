@@ -17,13 +17,25 @@
   <div class="row">
 
     </button>
-    <div class="mt-3 mb-3 text-center">
-      <button type="button" class="btn btn-primary" onclick="lea.addscore(5)" id="lea5">Lea +5 minutes</button>
-      <button type="button" class="btn btn-primary" onclick="vic.addscore(5)" id="vic5">Victoria +5 minutes</button>
-      <button type="button" class="btn btn-primary" onclick="enzo.addscore(5)" id="enzo5">Enzo +5 minutes</button>
-      <button type="button" class="btn btn-primary" onclick="lea.addscore(10)" id="lea5">Lea +10 minutes</button>
-      <button type="button" class="btn btn-primary" onclick="vic.addscore(10)" id="vic5">Victoria +10 minutes</button>
-      <button type="button" class="btn btn-primary" onclick="enzo.addscore(10)" id="enzo5">Enzo +10 minutes</button>
+    <div class="mt-3 mb-3">
+
+      <div class="input-group" id="monInputTimer">
+        <select class="custom-select" id="inputGroup" aria-label="Example select with button addon">
+          <option selected>Choisir...</option>
+          <option value="lea">Lea</option>
+          <option value="vic">Victoria</option>
+          <option value="enzo">Enzo</option>
+        </select>
+        <select class="custom-select" id="inputGroup2" aria-label="Example select with button addon">
+          <option selected>Choisir...</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+        <div class="input-group-append btn-primary">
+          <button class="btn" type="button" onclick="submit()" >Ajouter</button>
+        </div>
+      </div>
 
     </div>
     <div class="mb-3" >

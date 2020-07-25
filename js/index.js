@@ -104,3 +104,29 @@ for (let i = 0; i<tasksStorage.length; i++){
   showTask(tasksStorage[i])
 }
 //
+
+const inputGroup = document.getElementById('inputGroup')
+const inputGroup2 = document.getElementById('inputGroup2')
+const submit= () => {
+  if (inputGroup.value == "lea" && inputGroup2.value =="5"){
+    lea.addscore(5)
+  } else if (inputGroup.value == "lea" && inputGroup2.value =="10") {
+    lea.addscore(10)
+  } else if (inputGroup.value == "lea" && inputGroup2.value =="20")
+    lea.addscore(20)
+
+  if (inputGroup.value == "vic" && inputGroup2.value =="5"){
+    vic.addscore(5)
+  } else if (inputGroup.value == "vic" && inputGroup2.value =="10") {
+    vic.addscore(10)
+  } else if (inputGroup.value == "vic" && inputGroup2.value =="20")
+    vic.addscore(20)
+
+  if (inputGroup.value == "enzo" && inputGroup2.value =="5"){
+    enzo.addscore(5)
+  } else if (inputGroup.value == "enzo" && inputGroup2.value =="10") {
+    enzo.addscore(10)
+  } else if (inputGroup.value == "enzo" && inputGroup2.value =="20")
+    enzo.addscore(20)
+
+}
