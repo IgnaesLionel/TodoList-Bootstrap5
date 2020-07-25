@@ -1,3 +1,4 @@
+"use strict";
 //injection h1-h2
 const h1 = document.createElement('h1')
 h1.textContent = "My Todo List Project"
@@ -21,6 +22,18 @@ const showMyTasks = document.getElementById('showMyTasks')
 const tasksStorage = ["coding", "cooking", "trading"]
 //
 
+//compteur
+function compteur(){
+  let i = 0
+  return function(){
+    return i+=5;
+  }
+}
+
+const compteurLea = compteur();
+const compteurVic = compteur();
+const compteurEnzo = compteur();
+
 // affichage des tâches avec boutton.
 function showTask(task){
   input.focus()
@@ -33,7 +46,7 @@ function showTask(task){
   myTasks.className = "btn-primary mt-2 mb-2"
   removebtn.addEventListener('click', () => {showMyTasks.removeChild(removebtn.parentNode)})
   myTasks.appendChild(removebtn)
-  console.log(task)
+  console.log(tasksStorage)
   showMyTasks.insertBefore(myTasks, showMyTasks.firstChild)
 }
 
@@ -57,6 +70,7 @@ input.value="" //vide l'input
 clear.addEventListener('click', () => {
   tasksStorage.splice(0,tasksStorage.length)
   showTask()
+  showMyTasks.parentNode.removeChild(showMyTasks)
   }
 )
 //
