@@ -22,40 +22,42 @@ const showMyTasks = document.getElementById('showMyTasks')
 const tasksStorage = ["tâche1", "tâche2", "tâche3"]
 //
 
-//Creation des enfants
+//Constructeur d'enfants
 class Enfant {
   constructor(nom, score){
     this.nom = nom,
     this.score = score,
-    this.addscore = () => {
-      this.score += 5
+    //fonction qui ajoute 5 au score
+    this.addscore = (value) => {
+      this.score += value
       let injectScore = document.getElementById(nom)
-      injectScore.textContent= `${this.nom} à ${this.score} points !`
+      injectScore.textContent= `${this.nom} à ${this.score} minutes !`
       console.log(this.score)
     }
+    //fonction qui crée 5 un compteur
     this.create = () => {
       let injectp  = document.createElement('p')
-      injectp.textContent=`${this.nom} à ${this.score} points !`
+      injectp.textContent=`${this.nom} à ${this.score} minutes !`
       injectp.id=nom
       document.getElementById('score').appendChild(injectp)
     }
   }
 }
+//
 
+//creation de 3 enfants
 let lea = new Enfant("Lea", 0)
 let vic = new Enfant("Victoria", 0)
 let enzo = new Enfant("Enzo", 0)
-
 //
 
-//affichage des scores
-
+//affichage des compteurs
 lea.create()
 vic.create()
 enzo.create()
+//
 
-
-// affichage des tâches avec boutton.
+// affichage des tâches avec boutton de destruction.
 function showTask(task){
   input.focus()
   const myTasks = document.createElement('li')
@@ -78,16 +80,17 @@ input.addEventListener('keydown', (e) => {
 input.value=""} //vide l'input
   }
 )
+//
 
+//fonction d'ajout d'une tâche dans le tableau des tâches
 add.addEventListener('click', () => {tasksStorage.push(input.value)
 showTask(input.value)
 input.value="" //vide l'input
 }
 )
-
 //
 
-//Clear le tableau
+//Clear du tableau des tâches
 clear.addEventListener('click', () => {
   tasksStorage.splice(0,tasksStorage.length)
   showTask()
@@ -96,6 +99,8 @@ clear.addEventListener('click', () => {
 )
 //
 
+//Bouclier d'affichage des tâches
 for (let i = 0; i<tasksStorage.length; i++){
   showTask(tasksStorage[i])
 }
+//
