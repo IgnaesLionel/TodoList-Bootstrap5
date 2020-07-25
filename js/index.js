@@ -22,17 +22,30 @@ const showMyTasks = document.getElementById('showMyTasks')
 const tasksStorage = ["coding", "cooking", "trading"]
 //
 
-//compteur
-function compteur(){
-  let i = 0
-  return function(){
-    return i+=5;
+//Creation des enfants
+class Enfant {
+  constructor(nom, score){
+    this.nom = nom,
+    this.score = score
   }
 }
 
-const compteurLea = compteur();
-const compteurVic = compteur();
-const compteurEnzo = compteur();
+let lea = new Enfant("Lea", 0)
+let vic = new Enfant("vic", 0)
+let enzo = new Enfant("enzo", 0)
+//
+
+const showlea = document.createElement('p')
+showlea.textContent= `${lea.nom} à ${lea.score} points !`
+document.getElementById('score').appendChild(showlea)
+
+const showvic = document.createElement('p')
+showvic.textContent= `${vic.nom} à ${vic.score} points !`
+document.getElementById('score').appendChild(showvic)
+
+const showenzo = document.createElement('p')
+showenzo.textContent= `${enzo.nom} à ${enzo.score} points !`
+document.getElementById('score').appendChild(showenzo)
 
 // affichage des tâches avec boutton.
 function showTask(task){
