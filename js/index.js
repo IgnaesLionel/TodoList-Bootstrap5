@@ -26,18 +26,30 @@ const tasksStorage = ["coding", "cooking", "trading"]
 class Enfant {
   constructor(nom, score){
     this.nom = nom,
-    this.score = score
+    this.score = score,
+    this.addscore = () => {
+      this.score += 5
+      showlea.textContent= `${this.nom} à ${this.score} points !`
+      console.log(this.score)
+    }
+        
   }
 }
 
+
 let lea = new Enfant("Lea", 0)
-let vic = new Enfant("vic", 0)
-let enzo = new Enfant("enzo", 0)
+let vic = new Enfant("Victoria", 0)
+let enzo = new Enfant("Enzo", 0)
 //
+
+//affichage des scores
+
 
 const showlea = document.createElement('p')
 showlea.textContent= `${lea.nom} à ${lea.score} points !`
 document.getElementById('score').appendChild(showlea)
+
+
 
 const showvic = document.createElement('p')
 showvic.textContent= `${vic.nom} à ${vic.score} points !`
@@ -46,6 +58,7 @@ document.getElementById('score').appendChild(showvic)
 const showenzo = document.createElement('p')
 showenzo.textContent= `${enzo.nom} à ${enzo.score} points !`
 document.getElementById('score').appendChild(showenzo)
+//
 
 // affichage des tâches avec boutton.
 function showTask(task){
