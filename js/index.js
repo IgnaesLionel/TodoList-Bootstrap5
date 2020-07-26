@@ -1,13 +1,13 @@
 "use strict";
 //injection h1-h2
 const h1 = document.createElement('h1')
-h1.textContent = "My Todo List Project"
+h1.textContent = "Housework day v0.00001 pre-alpha"
 h1.className = "text-center"
-const h3 = document.createElement('h3')
-h3.textContent = "Bienvenue sur notre outil gestion des tâches"
-h3.className = "text-center"
+const h4 = document.createElement('h4')
+h4.textContent = "Outil de gestion des tâches domestique ;)"
+h4.className = "text-center"
 const myContainer = document.getElementsByClassName('container')[0]
-myContainer.insertBefore(h3, myContainer.firstChild)
+myContainer.insertBefore(h4, myContainer.firstChild)
 myContainer.insertBefore(h1, myContainer.firstChild)
 //
 
