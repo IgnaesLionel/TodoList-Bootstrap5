@@ -57,28 +57,9 @@ class Enfant {
       localStorage.setItem(`${this.nom}`, this.score)
       this.create()
       console.log (score)
-
     }
-
-
   }
 }
-//
-
-//creation de 3 enfants
-let lea = new Enfant("Lea", 0)
-let vic = new Enfant("Victoria", 0)
-let enzo = new Enfant("Enzo", 0)
-//
-
-//affichage des compteurs
-lea.scoreUpdate()
-lea.create()
-vic.scoreUpdate()
-vic.create()
-enzo.scoreUpdate()
-enzo.create()
-
 //
 
 // affichage des tâches avec boutton de destruction.
@@ -156,6 +137,7 @@ const submit= () => {
 
 }
 
+//Gestion Input -> Remise à zero des scores
 const resetMyScore = () => {
   if (inputGroup.value == "lea"){
     lea.scoreReset()
@@ -164,4 +146,13 @@ const resetMyScore = () => {
 } else if (inputGroup.value == "enzo"){
   enzo.scoreReset()
 } else {}
+}
+
+//Gestion input-> Creation d'un nouvelle utilisateur
+const createUser = () => {
+  const inputUser = document.getElementById('inputUser')
+  const user = new Enfant(`${inputUser.value}`, 0)
+  user.scoreUpdate()
+  user.create()
+  console.log(user)
 }
