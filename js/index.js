@@ -30,8 +30,7 @@ class Enfant {
     //fonction qui ajoute des minutes au score
     this.addscore = (value) => {
       this.score += value
-      let injectScore = document.getElementById(nom)
-      injectScore.textContent= `${this.nom} à ${this.score} minutes !`
+      this.create()
       localStorage.setItem(`${this.nom}`, this.score)
       console.log(this.score)
     }
@@ -49,14 +48,15 @@ class Enfant {
   }
     //charge le score du localstorage
     this.scoreUpdate = () => {
-      this.score = localStorage.getItem(`${this.nom}`)
-
+      let storedScore = parseInt(localStorage.getItem(`${this.nom}`))
+      this.score = storedScore
     }
     //remet le score a zero du localstorage + variable score
     this.scoreReset = () => {
-      this.score = "0"
+      this.score = 0
       localStorage.setItem(`${this.nom}`, this.score)
-      create()
+      this.create()
+      console.log (score)
 
     }
 
@@ -77,7 +77,6 @@ lea.create()
 vic.scoreUpdate()
 vic.create()
 enzo.scoreUpdate()
-enzo.create()
 enzo.create()
 
 //
@@ -154,4 +153,14 @@ const submit= () => {
   } else if (inputGroup.value == "enzo" && inputGroup2.value =="20")
     enzo.addscore(20)
 
+}
+
+const resetMyScore = () => {
+  if (inputGroup.value == "lea"){
+    lea.scoreReset()
+}else if (inputGroup.value == "vic"){
+  vic.scoreReset()
+} else if (inputGroup.value == "enzo"){
+  enzo.scoreReset()
+} else {}
 }
