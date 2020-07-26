@@ -27,7 +27,7 @@ class Enfant {
   constructor(nom, score){
     this.nom = nom,
     this.score = score,
-    //fonction qui ajoute des minutes au score
+    //fonction qui ajoute des minutes au score et en local.
     this.addscore = (value) => {
       this.score += value
       this.create()
@@ -129,6 +129,7 @@ for (let i = 0; i<tasksStorage.length; i++){
 }
 //
 
+//Gestion input->ajout des scores
 const inputGroup = document.getElementById('inputGroup')
 const inputGroup2 = document.getElementById('inputGroup2')
 const submit= () => {
