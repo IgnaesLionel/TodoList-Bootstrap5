@@ -35,10 +35,10 @@ class Enfant {
       localStorage.setItem(`${this.nom}`, this.score)
       console.log(this.score)
     }
-    //fonction qui affiche un compteur
+    //fonction qui creer un compteur ou le met a jour si il existe deja
     this.create = () => {
       if (document.getElementById(`${this.nom}`)){
-        console.log("il existe deja")
+        document.getElementById(`${this.nom}`).textContent=`${this.nom} à ${this.score} minutes !`
        }else
        {
       let injectp  = document.createElement('p')
@@ -50,11 +50,13 @@ class Enfant {
     //charge le score du localstorage
     this.scoreUpdate = () => {
       this.score = localStorage.getItem(`${this.nom}`)
+
     }
     //remet le score a zero du localstorage + variable score
     this.scoreReset = () => {
       this.score = "0"
       localStorage.setItem(`${this.nom}`, this.score)
+      create()
 
     }
 
@@ -75,6 +77,7 @@ lea.create()
 vic.scoreUpdate()
 vic.create()
 enzo.scoreUpdate()
+enzo.create()
 enzo.create()
 
 //
