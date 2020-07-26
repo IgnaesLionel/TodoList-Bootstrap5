@@ -27,20 +27,38 @@ class Enfant {
   constructor(nom, score){
     this.nom = nom,
     this.score = score,
-    //fonction qui ajoute 5 au score
+    //fonction qui ajoute des minutes au score
     this.addscore = (value) => {
       this.score += value
       let injectScore = document.getElementById(nom)
       injectScore.textContent= `${this.nom} à ${this.score} minutes !`
+      localStorage.setItem(`${this.nom}`, this.score)
       console.log(this.score)
     }
-    //fonction qui crée 5 un compteur
+    //fonction qui affiche un compteur
     this.create = () => {
+      if (document.getElementById(`${this.nom}`)){
+        console.log("il existe deja")
+       }else
+       {
       let injectp  = document.createElement('p')
       injectp.textContent=`${this.nom} à ${this.score} minutes !`
       injectp.id=nom
       document.getElementById('score').appendChild(injectp)
     }
+  }
+    //charge le score du localstorage
+    this.scoreUpdate = () => {
+      this.score = localStorage.getItem(`${this.nom}`)
+    }
+    //remet le score a zero du localstorage + variable score
+    this.scoreReset = () => {
+      this.score = "0"
+      localStorage.setItem(`${this.nom}`, this.score)
+
+    }
+
+
   }
 }
 //
@@ -52,9 +70,13 @@ let enzo = new Enfant("Enzo", 0)
 //
 
 //affichage des compteurs
+lea.scoreUpdate()
 lea.create()
+vic.scoreUpdate()
 vic.create()
+enzo.scoreUpdate()
 enzo.create()
+
 //
 
 // affichage des tâches avec boutton de destruction.
@@ -99,7 +121,7 @@ clear.addEventListener('click', () => {
 )
 //
 
-//Bouclier d'affichage des tâches
+//Boucle d'affichage des tâches
 for (let i = 0; i<tasksStorage.length; i++){
   showTask(tasksStorage[i])
 }
