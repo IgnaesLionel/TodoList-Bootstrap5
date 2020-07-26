@@ -61,6 +61,11 @@ class Enfant {
   }
 }
 //
+//creation de 3 enfants
+let lea = new Enfant("Lea", 0)
+let vic = new Enfant("Victoria", 0)
+let enzo = new Enfant("Enzo", 0)
+//
 
 // affichage des tâches avec boutton de destruction.
 function showTask(task){
