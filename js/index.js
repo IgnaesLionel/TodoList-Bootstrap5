@@ -15,7 +15,7 @@ class Enfant {
   constructor(nom, score){
     this.nom = nom,
     this.score = score,
-    //fonction qui ajoute des minutes au score et en local.
+    //fonction qui ajoute des minutes au score et sauvegarde local.
     this.addscore = (value) => {
       this.score += value
       this.create()
@@ -33,13 +33,17 @@ class Enfant {
       injectLi.id=nom
       document.getElementById('score').appendChild(injectLi)
       //ajout d'une boutton +5
-      const btn = document.createElement('button')
-      btn.textContent = "+5"
-      btn.className = "btn btn-primary mb-3"
-      btn.addEventListener('click', () => {this.addscore(5)})
-      const target = document.getElementById(`${this.nom}`)
-      //target.appendChild(btn, target.lastChild)
-      document.getElementById('score').appendChild(btn)
+      const btn5 = document.createElement('button')
+      btn5.textContent = "+5"
+      btn5.className = "btn btn-primary mb-3"
+      btn5.addEventListener('click', () => {this.addscore(5)})
+
+      const btn_reset = document.createElement('button')
+      btn_reset.textContent = "reset"
+      btn_reset.className = "btn btn-primary mb-3"
+      btn_reset.addEventListener('click', () => {this.scoreReset()})
+      document.getElementById('score').appendChild(btn5)
+      document.getElementById('score').appendChild(btn_reset)
 
     }
   }
@@ -112,31 +116,7 @@ for (let i = 0; i<tasksStorage.length; i++){
 }
 //
 
-//Gestion input->ajout des scores
 
-const submit= () => {
-  if (inputGroup.value == "lea" && inputGroup2.value =="5"){
-    lea.addscore(5)
-  } else if (inputGroup.value == "lea" && inputGroup2.value =="10") {
-    lea.addscore(10)
-  } else if (inputGroup.value == "lea" && inputGroup2.value =="20")
-    lea.addscore(20)
-
-  if (inputGroup.value == "vic" && inputGroup2.value =="5"){
-    vic.addscore(5)
-  } else if (inputGroup.value == "vic" && inputGroup2.value =="10") {
-    vic.addscore(10)
-  } else if (inputGroup.value == "vic" && inputGroup2.value =="20")
-    vic.addscore(20)
-
-  if (inputGroup.value == "enzo" && inputGroup2.value =="5"){
-    enzo.addscore(5)
-  } else if (inputGroup.value == "enzo" && inputGroup2.value =="10") {
-    enzo.addscore(10)
-  } else if (inputGroup.value == "enzo" && inputGroup2.value =="20")
-    enzo.addscore(20)
-
-}
 
 //Gestion Input -> Remise à zero des scores
 const resetMyScore = () => {
