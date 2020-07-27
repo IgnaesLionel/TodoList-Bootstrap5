@@ -31,18 +31,18 @@ class Enfant {
         document.getElementById(`${this.nom}`).textContent=`${this.nom} à ${this.score} minutes !`
         }else
         {
-      let injectp  = document.createElement('p')
-      injectp.textContent=`${this.nom} à ${this.score} minutes !`
-      injectp.id=nom
-      document.getElementById('score').appendChild(injectp)
+      let injectLi  = document.createElement('li')
+      injectLi.textContent=`${this.nom} à ${this.score} minutes !`
+      injectLi.id=nom
+      document.getElementById('score').appendChild(injectLi)
       //ajout d'une boutton +5
       const btn = document.createElement('button')
       btn.textContent = "+5"
       btn.className = "btn btn-primary mb-3"
       btn.addEventListener('click', () => {this.addscore(15)})
       const target = document.getElementById(`${this.nom}`)
-      target.appendChild(btn, target.lastChild)
-      //document.getElementById('score').appendChild(injectp)
+      //target.appendChild(btn, target.lastChild)
+      document.getElementById('score').appendChild(btn)
 
     }
   }
@@ -162,4 +162,5 @@ const createUser = () => {
 }
 
 
-lea.create()
+//lea.create()
+//vic.create()
