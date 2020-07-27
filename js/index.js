@@ -7,10 +7,11 @@ const showMyTasks = document.getElementById('showMyTasks')
 const inputGroup = document.getElementById('inputGroup')
 const inputGroup2 = document.getElementById('inputGroup2')
 //
-
 //stockage des tâches
 const tasksStorage = []
 //
+
+
 
 //Constructeur d'enfants
 class Enfant {
@@ -28,12 +29,21 @@ class Enfant {
     this.create = () => {
       if (document.getElementById(`${this.nom}`)){
         document.getElementById(`${this.nom}`).textContent=`${this.nom} à ${this.score} minutes !`
-       }else
-       {
+        }else
+        {
       let injectp  = document.createElement('p')
       injectp.textContent=`${this.nom} à ${this.score} minutes !`
       injectp.id=nom
       document.getElementById('score').appendChild(injectp)
+      //ajout d'une boutton +5
+      const btn = document.createElement('button')
+      btn.textContent = "+5"
+      btn.className = "btn btn-primary mb-3"
+      btn.addEventListener('click', () => {this.addscore(15)})
+      const target = document.getElementById(`${this.nom}`)
+      target.appendChild(btn, target.lastChild)
+      //document.getElementById('score').appendChild(injectp)
+
     }
   }
     //charge le score du localstorage
@@ -60,17 +70,17 @@ let enzo = new Enfant("Enzo", 0)
 // affichage des tâches avec boutton de destruction.
 function showTask(task){
   input.focus()
-  const myTasks = document.createElement('li')
-  const removebtn = document.createElement('button')
-  removebtn.textContent ='x'
-  myTasks.textContent = task
-  removebtn.className = "btn btn-primary"
-  removebtn.style.color = "red"
-  myTasks.className = "btn-primary mt-2 mb-2"
-  removebtn.addEventListener('click', () => {showMyTasks.removeChild(removebtn.parentNode)})
-  myTasks.appendChild(removebtn)
+  const li = document.createElement('li')
+  const removeli_btn = document.createElement('button')
+  removeli_btn.textContent ='x'
+  li.textContent = task
+  removeli_btn.className = "btn btn-primary"
+  removeli_btn.style.color = "red"
+  li.className = "btn-primary mt-2 mb-2"
+  removeli_btn.addEventListener('click', () => {showMyTasks.removeChild(removeli_btn.parentNode)})
+  li.appendChild(removeli_btn)
   console.log(tasksStorage)
-  showMyTasks.insertBefore(myTasks, showMyTasks.firstChild)
+  showMyTasks.insertBefore(li, showMyTasks.firstChild)
 }
 
 //event du bouton Ajouter et l'input enter
@@ -150,3 +160,6 @@ const createUser = () => {
   user.create()
   console.log(user)
 }
+
+
+lea.create()
