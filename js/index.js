@@ -24,10 +24,13 @@ class Enfant {
     }
     //fonction qui creer un compteur ou le met a jour si il existe deja
     this.create = () => {
+
       if (document.getElementById(`${this.nom}`)){
         document.getElementById(`${this.nom}`).textContent=`${this.nom} à ${this.score} minutes !`
         }else
         {
+        let storedScore = parseInt(localStorage.getItem(`${this.nom}`))
+        this.score = storedScore
       let injectLi  = document.createElement('li')
       injectLi.textContent=`${this.nom} à ${this.score} minutes !`
       injectLi.id=nom
@@ -42,16 +45,15 @@ class Enfant {
       btn_reset.textContent = "reset"
       btn_reset.className = "btn btn-primary mb-3"
       btn_reset.addEventListener('click', () => {this.scoreReset()})
+
+
       document.getElementById('score').appendChild(btn5)
       document.getElementById('score').appendChild(btn_reset)
 
+
     }
   }
-    //charge le score du localstorage
-    this.scoreUpdate = () => {
-      let storedScore = parseInt(localStorage.getItem(`${this.nom}`))
-      this.score = storedScore
-    }
+
     //remet le score a zero du localstorage + variable score
     this.scoreReset = () => {
       this.score = 0
@@ -139,7 +141,6 @@ const createUser = () => {
   console.log(user.nom)
 }
 
-lea.scoreUpdate()
+
 lea.create()
-vic.scoreUpdate()
 vic.create()
