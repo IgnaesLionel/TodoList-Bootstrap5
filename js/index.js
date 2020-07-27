@@ -1,25 +1,15 @@
 "use strict";
-//injection h1-h2
-const h1 = document.createElement('h1')
-h1.textContent = "Housework day v0.00001 pre-alpha"
-h1.className = "text-center"
-const h4 = document.createElement('h4')
-h4.textContent = "Outil de gestion des tâches domestique ;)"
-h4.className = "text-center"
-const myContainer = document.getElementsByClassName('container')[0]
-myContainer.insertBefore(h4, myContainer.firstChild)
-myContainer.insertBefore(h1, myContainer.firstChild)
-//
-
 //targeting des bouttons et id d'insertion
 const add = document.getElementById('add')
 const input = document.getElementById('input')
 const clear = document.getElementById('clear')
 const showMyTasks = document.getElementById('showMyTasks')
+const inputGroup = document.getElementById('inputGroup')
+const inputGroup2 = document.getElementById('inputGroup2')
 //
 
 //stockage des tâches
-const tasksStorage = ["tâche1", "tâche2", "tâche3"]
+const tasksStorage = []
 //
 
 //Constructeur d'enfants
@@ -116,8 +106,7 @@ for (let i = 0; i<tasksStorage.length; i++){
 //
 
 //Gestion input->ajout des scores
-const inputGroup = document.getElementById('inputGroup')
-const inputGroup2 = document.getElementById('inputGroup2')
+
 const submit= () => {
   if (inputGroup.value == "lea" && inputGroup2.value =="5"){
     lea.addscore(5)
