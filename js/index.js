@@ -15,16 +15,9 @@ class Enfant {
   constructor(nom, score){
     this.nom = nom,
     this.score = score,
-    //fonction qui ajoute des minutes au score et sauvegarde local.
-    this.addscore = (value) => {
-      this.score += value
-      this.create()
-      localStorage.setItem(`${this.nom}`, this.score)
-      console.log(this.score)
-    }
+
     //fonction qui creer un compteur ou le met a jour si il existe deja
     this.create = () => {
-
       if (document.getElementById(`${this.nom}`)){
         document.getElementById(`${this.nom}`).textContent=`${this.nom} à ${this.score} minutes !`
         }else
@@ -35,26 +28,26 @@ class Enfant {
       injectLi.textContent=`${this.nom} à ${this.score} minutes !`
       injectLi.id=nom
       document.getElementById('score').appendChild(injectLi)
-      //ajout d'une boutton +5
+      //ajout d'un boutton +5 et d'un boutton reset
       const btn5 = document.createElement('button')
       btn5.textContent = "+5"
       btn5.className = "btn btn-primary mb-3"
       btn5.addEventListener('click', () => {this.addscore(5)})
-
       const btn_reset = document.createElement('button')
       btn_reset.textContent = "reset"
       btn_reset.className = "btn btn-primary mb-3"
       btn_reset.addEventListener('click', () => {this.scoreReset()})
-
-
       document.getElementById('score').appendChild(btn5)
       document.getElementById('score').appendChild(btn_reset)
-
-
     }
   }
-
-    //remet le score a zero du localstorage + variable score
+    //fonction qui ajoute des minutes au score et sauvegarde local.
+    this.addscore = (value) => {
+      this.score += value
+      this.create() //Refresh ui
+      localStorage.setItem(`${this.nom}`, this.score)
+    }
+    //remet le score a zero sur localstorage et variable score
     this.scoreReset = () => {
       this.score = 0
       localStorage.setItem(`${this.nom}`, this.score)
@@ -107,7 +100,7 @@ input.value="" //vide l'input
 clear.addEventListener('click', () => {
   tasksStorage.splice(0,tasksStorage.length)
   showTask()
-  showMyTasks.parentNode.removeChild(showMyTasks)
+  showMyTasks.innerHTML=''
   }
 )
 //
@@ -144,3 +137,4 @@ const createUser = () => {
 
 lea.create()
 vic.create()
+enzo.create()
