@@ -1,18 +1,15 @@
 "use strict";
 //targeting des bouttons et id d'insertion
-const add = document.getElementById('add')
-const input = document.getElementById('input')
-const clear = document.getElementById('clear')
-const showMyTasks = document.getElementById('showMyTasks')
-const inputGroup = document.getElementById('inputGroup')
-const inputGroup2 = document.getElementById('inputGroup2')
+const add = document.getElementById('add') //btn
+const input = document.getElementById('input') //input
+const clear = document.getElementById('clear') //btn
+const showMyTasks = document.getElementById('showMyTasks') //ul
+const inputGroup = document.getElementById('inputGroup') //input selector
+const inputGroup2 = document.getElementById('inputGroup2') //input selector
 //
 //stockage des tâches
 const tasksStorage = []
 //
-
-
-
 //Constructeur d'enfants
 class Enfant {
   constructor(nom, score){
@@ -39,7 +36,7 @@ class Enfant {
       const btn = document.createElement('button')
       btn.textContent = "+5"
       btn.className = "btn btn-primary mb-3"
-      btn.addEventListener('click', () => {this.addscore(15)})
+      btn.addEventListener('click', () => {this.addscore(5)})
       const target = document.getElementById(`${this.nom}`)
       //target.appendChild(btn, target.lastChild)
       document.getElementById('score').appendChild(btn)
@@ -159,8 +156,10 @@ const createUser = () => {
   user.scoreUpdate()
   user.create()
   console.log(user)
+  console.log(user.nom)
 }
 
-
-//lea.create()
-//vic.create()
+lea.scoreUpdate()
+lea.create()
+vic.scoreUpdate()
+vic.create()
