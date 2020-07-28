@@ -1,14 +1,16 @@
 "use strict";
 //targeting des bouttons et id d'insertion
-const add = document.getElementById('add') //btn
+const addTask = document.getElementById('addTask') //btn
+const addUser = document.getElementById('addUser')
 const input = document.getElementById('input') //input
 const clear = document.getElementById('clear') //btn
 const showMyTasks = document.getElementById('showMyTasks') //ul
+const showUser = document.getElementById('showUser') //ul
 const inputGroup = document.getElementById('inputGroup') //input selector
 const inputGroup2 = document.getElementById('inputGroup2') //input selector
-//
 
 const tasksStorage = []
+const userStorage = []
 
 class Enfant {
   constructor(nom, score){
@@ -26,7 +28,7 @@ class Enfant {
       injectLi.textContent=`${this.nom} à ${this.score} minutes !`
       injectLi.id=nom
       document.getElementById('score').appendChild(injectLi)
-      //ajout d'un boutton +5 et d'un boutton reset
+      //ajout d'un boutton +5 et d'un boutton reset score
       const btn5 = document.createElement('button')
       btn5.textContent = "+5"
       btn5.className = "btn btn-primary mb-3"
@@ -56,9 +58,6 @@ class Enfant {
 }
 //
 //creation de 3 enfants
-let lea = new Enfant("Lea", 0)
-let vic = new Enfant("Victoria", 0)
-let enzo = new Enfant("Enzo", 0)
 
 // affichage des tâches avec boutton de destruction.
 function showTask(task){
@@ -83,7 +82,7 @@ input.addEventListener('keydown', (e) => {
 input.value=""} //vide l'input
   }
 )
-add.addEventListener('click', () => {tasksStorage.push(input.value)
+addTask.addEventListener('click', () => {tasksStorage.push(input.value)
 showTask(input.value)
 input.value="" //vide l'input
 }
@@ -104,14 +103,41 @@ for (let i = 0; i<tasksStorage.length; i++){
 
 //Gestion input-> Creation d'un nouvelle utilisateur
 const createUser = () => {
-  const inputUser = document.getElementById('inputUser')
-  const user = new Enfant(`${inputUser.value}`, 0)
-  user.scoreUpdate()
-  user.create()
-  console.log(user)
-  console.log(user.nom)
+  inputUser = document.getElementById('inputUser')
+  inputUser.focus()
+  userStorage.push(inputUser.value)
+  console.log (userStorage)
 }
 
+inputUser.addEventListener('keydown', (e) => {
+  if (e.keyCode===13){userStorage.push(inputUser.value)
+  showUsers(inputUser.value)
+inputUser.value=""}
+}
+)
+
+addUser.addEventListener('click', () => {userStorage.push(inputUser.value)
+showUsers(inputUser.value)
+inputUser.value="" //vide l'input
+}
+)
+
+function showUsers(user){
+const liUser = document.createElement('li')
+const user5 = document.createElement('button')
+user5.textContent ='x'
+liUser.textContent = user
+user5.className = "btn btn-primary"
+user5.style.color = "red"
+liUser.className = "btn-primary mt-2 mb-2"
+user5.addEventListener('click', () => {showUser.removeChild(user5.parentNode)})
+liUser.appendChild(user5)
+showUser.insertBefore(liUser, showUser.firstChild)
+}
+
+let lea = new Enfant("Lea", 0)
+let vic = new Enfant("Victoria", 0)
+let enzo = new Enfant("Enzo", 0)
 lea.create()
 vic.create()
 enzo.create()
