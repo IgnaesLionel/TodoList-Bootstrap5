@@ -7,15 +7,13 @@ const showMyTasks = document.getElementById('showMyTasks') //ul
 const inputGroup = document.getElementById('inputGroup') //input selector
 const inputGroup2 = document.getElementById('inputGroup2') //input selector
 //
-//stockage des tâches
+
 const tasksStorage = []
-//
-//Constructeur d'enfants
+
 class Enfant {
   constructor(nom, score){
     this.nom = nom,
     this.score = score,
-
     //fonction qui creer un compteur ou le met a jour si il existe deja
     this.create = () => {
       if (document.getElementById(`${this.nom}`)){
@@ -41,7 +39,7 @@ class Enfant {
       document.getElementById('score').appendChild(btn_reset)
     }
   }
-    //fonction qui ajoute des minutes au score et sauvegarde local.
+    //fonction qui ajoute au score et sauvegarde local.
     this.addscore = (value) => {
       this.score += value
       this.create() //Refresh ui
@@ -61,7 +59,6 @@ class Enfant {
 let lea = new Enfant("Lea", 0)
 let vic = new Enfant("Victoria", 0)
 let enzo = new Enfant("Enzo", 0)
-//
 
 // affichage des tâches avec boutton de destruction.
 function showTask(task){
@@ -79,49 +76,30 @@ function showTask(task){
   showMyTasks.insertBefore(li, showMyTasks.firstChild)
 }
 
-//event du bouton Ajouter et l'input enter
+//event d'ajout du bouton Ajouter et de l'input au clavier
 input.addEventListener('keydown', (e) => {
   if (e.keyCode===13){tasksStorage.push(input.value)
   showTask(input.value)
 input.value=""} //vide l'input
   }
 )
-//
-
-//fonction d'ajout d'une tâche dans le tableau des tâches
 add.addEventListener('click', () => {tasksStorage.push(input.value)
 showTask(input.value)
 input.value="" //vide l'input
 }
 )
-//
 
 //Clear du tableau des tâches
 clear.addEventListener('click', () => {
   tasksStorage.splice(0,tasksStorage.length)
   showTask()
   showMyTasks.innerHTML=''
-  }
+}
 )
-//
 
 //Boucle d'affichage des tâches
 for (let i = 0; i<tasksStorage.length; i++){
   showTask(tasksStorage[i])
-}
-//
-
-
-
-//Gestion Input -> Remise à zero des scores
-const resetMyScore = () => {
-  if (inputGroup.value == "lea"){
-    lea.scoreReset()
-}else if (inputGroup.value == "vic"){
-  vic.scoreReset()
-} else if (inputGroup.value == "enzo"){
-  enzo.scoreReset()
-} else {}
 }
 
 //Gestion input-> Creation d'un nouvelle utilisateur
@@ -133,7 +111,6 @@ const createUser = () => {
   console.log(user)
   console.log(user.nom)
 }
-
 
 lea.create()
 vic.create()
